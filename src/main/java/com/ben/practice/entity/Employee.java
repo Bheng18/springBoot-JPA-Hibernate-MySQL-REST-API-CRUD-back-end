@@ -2,6 +2,7 @@ package com.ben.practice.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 @Table(name="employeetbl")
@@ -40,14 +44,19 @@ public class Employee {
 	
 	@NotNull
 	@Temporal(TemporalType.DATE)
+	@Column(name="hire_date" )
 	private Date hireDate;
-			
+	
+    @NotNull
+    @Column(name = "is_permanent")
+	private boolean isPermanent;
+	
 	public Employee() {	}
 	
 	
 	
 	public Employee(@NotBlank String fullName, @NotBlank String email, @NotBlank String mobile, @NotBlank String city,
-			@NotBlank String gender, @NotBlank String department, @NotBlank Date hireDate) {
+			@NotBlank String gender, @NotBlank String department, @NotBlank Date hireDate, @NotNull boolean isPermanent) {
 		this.fullName = fullName;
 		this.email = email;
 		this.mobile = mobile;
@@ -55,6 +64,7 @@ public class Employee {
 		this.gender = gender;
 		this.department = department;
 		this.hireDate = hireDate;
+		this.isPermanent = isPermanent;
 	}
 
 
@@ -123,11 +133,20 @@ public class Employee {
 	}
 
 	
+	public boolean isPermanent() {
+		return isPermanent;
+	}
+
+
+	public void setPermanent(boolean isPermanent) {
+		this.isPermanent = isPermanent;
+	}
+	
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", fullName=" + fullName + ", email=" + email + ", mobile=" + mobile
 				+ ", city=" + city + ", gender=" + gender + ", department=" + department + ", hireDate=" + hireDate
-				+ "]";
+				+ ", isPermanent=" + isPermanent + "]";
 	}
 	
 		

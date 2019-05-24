@@ -20,7 +20,7 @@ import com.ben.practice.entity.Employee;
 import com.ben.practice.service.EmployeeRepository;
 //
 
-//@CrossOrigin(origins="http://localhost:4200", allowedHeaders="*")
+//@CrossOrigin(origins = "http://localhost:4200") 
 @RequestMapping("/api")
 @RestController
 public class EmployeeController {
@@ -28,28 +28,33 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepo;
 	
-	@GetMapping("/employees")
+	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@GetMapping("/")
 	public List<Employee> getEmployeeList(){
 		return employeeRepo.findAll();
 	}
-	
-	@GetMapping("/employees/{empId}")
+
+	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@GetMapping("/detailsEmployees/{empId}")
 	public Optional<Employee> getEmployee(@PathVariable("empId") Long empId) {
 		return employeeRepo.findById(empId);
 	}
-
-	@DeleteMapping("/employees/{empId}")
+	
+	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@DeleteMapping("/deleteEmployees/{empId}")
 	public boolean deleteEmployee(@PathVariable Long empId) {
 		employeeRepo.deleteById(empId);
 		return true;
 	}
 
-	@PutMapping("/employees")
+	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@PutMapping("/updateEmployees")
 	public Employee updateEmployee(@RequestBody Employee employee) {
 		return employeeRepo.save(employee);
 	}
 
-	@PostMapping(value = "/employees")
+	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@PostMapping(value = "/addEmployees")
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return employeeRepo.save(employee);
 	}
