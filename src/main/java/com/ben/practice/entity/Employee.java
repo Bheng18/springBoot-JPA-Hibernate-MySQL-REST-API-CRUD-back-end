@@ -1,12 +1,16 @@
 package com.ben.practice.entity;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="employeetbl")
@@ -21,14 +25,40 @@ public class Employee {
 	
 	@NotBlank
 	private String email;
+	
+	@NotNull
+	private String mobile;
+	
+	@NotBlank
+	private String city;
+	
+	@NotBlank
+	private String gender;
+	
+	@NotBlank
+	private String department;
+	
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	private Date hireDate;
 			
 	public Employee() {	}
 	
-	public Employee(String fullName, String email) {
+	
+	
+	public Employee(@NotBlank String fullName, @NotBlank String email, @NotBlank String mobile, @NotBlank String city,
+			@NotBlank String gender, @NotBlank String department, @NotBlank Date hireDate) {
 		this.fullName = fullName;
 		this.email = email;
+		this.mobile = mobile;
+		this.city = city;
+		this.gender = gender;
+		this.department = department;
+		this.hireDate = hireDate;
 	}
-	
+
+
+
 	public Long getEmpId() {
 		return empId;
 	}
@@ -51,12 +81,55 @@ public class Employee {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public Date getHireDate() {
+		return hireDate;
+	}
+
+	public void setHireDate(Date hireDate) {
+		this.hireDate = hireDate;
+	}
+
 	
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", fullName=" + fullName + ", email=" + email + "]";
+		return "Employee [empId=" + empId + ", fullName=" + fullName + ", email=" + email + ", mobile=" + mobile
+				+ ", city=" + city + ", gender=" + gender + ", department=" + department + ", hireDate=" + hireDate
+				+ "]";
 	}
 	
-	
+		
 	
 }
