@@ -48,15 +48,15 @@ public class Employee {
 	private Date hireDate;
 	
     @NotNull
-    @Column(name = "is_permanent")
-	private boolean isPermanent;
+    @Column(name = "permanent")
+	private boolean permanent;
 	
 	public Employee() {	}
 	
 	
 	
 	public Employee(@NotBlank String fullName, @NotBlank String email, @NotBlank String mobile, @NotBlank String city,
-			@NotBlank String gender, @NotBlank String department, @NotBlank Date hireDate, @NotNull boolean isPermanent) {
+			@NotBlank String gender, @NotBlank String department, @NotBlank Date hireDate, @NotNull boolean permanent) {
 		this.fullName = fullName;
 		this.email = email;
 		this.mobile = mobile;
@@ -64,7 +64,7 @@ public class Employee {
 		this.gender = gender;
 		this.department = department;
 		this.hireDate = hireDate;
-		this.isPermanent = isPermanent;
+		this.permanent = permanent;
 	}
 
 
@@ -134,19 +134,19 @@ public class Employee {
 
 	
 	public boolean isPermanent() {
-		return isPermanent;
+		return permanent;
 	}
 
 
-	public void setPermanent(boolean isPermanent) {
-		this.isPermanent = isPermanent;
+	public void setPermanent(boolean permanent) {
+		this.permanent = permanent;
 	}
 	
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", fullName=" + fullName + ", email=" + email + ", mobile=" + mobile
 				+ ", city=" + city + ", gender=" + gender + ", department=" + department + ", hireDate=" + hireDate
-				+ ", isPermanent=" + isPermanent + "]";
+				+ ", permanent=" + permanent + "]";
 	}
 	
 		

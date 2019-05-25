@@ -29,7 +29,7 @@ public class EmployeeController {
 	private EmployeeRepository employeeRepo;
 	
 	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
-	@GetMapping("/")
+	@GetMapping("/employeeList")
 	public List<Employee> getEmployeeList(){
 		return employeeRepo.findAll();
 	}
@@ -54,7 +54,7 @@ public class EmployeeController {
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
-	@PostMapping(value = "/addEmployees")
+	@PostMapping("/addEmployees")
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return employeeRepo.save(employee);
 	}
