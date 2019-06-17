@@ -28,32 +28,32 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepo;
 	
-	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@CrossOrigin(origins = "https://angular-jf.herokuapp.com", allowedHeaders="*")
 	@GetMapping("/employeeList")
 	public List<Employee> getEmployeeList(){
 		return employeeRepo.findAll();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@CrossOrigin(origins = "https://angular-jf.herokuapp.com", allowedHeaders="*")
 	@GetMapping("/detailsEmployees/{empId}")
 	public Optional<Employee> getEmployee(@PathVariable("empId") Long empId) {
 		return employeeRepo.findById(empId);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@CrossOrigin(origins = "https://angular-jf.herokuapp.com", allowedHeaders="*")
 	@DeleteMapping("/deleteEmployees/{empId}")
 	public boolean deleteEmployee(@PathVariable Long empId) {
 		employeeRepo.deleteById(empId);
 		return true;
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@CrossOrigin(origins = "https://angular-jf.herokuapp.com", allowedHeaders="*")
 	@PutMapping("/updateEmployees")
 	public Employee updateEmployee(@RequestBody Employee employee) {
 		return employeeRepo.save(employee);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200", allowedHeaders="*")
+	@CrossOrigin(origins = "https://angular-jf.herokuapp.com", allowedHeaders="*")
 	@PostMapping("/addEmployees")
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return employeeRepo.save(employee);
